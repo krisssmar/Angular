@@ -1,0 +1,23 @@
+<header>
+</header>
+<body>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Number of attendencies</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of meeting">
+      <td>{{item.title}}</td>
+      <td>{{item.date}}</td>
+      <td>{{item.numberOfAttendencies}}</td>
+      <td><a routerLink="/attend/0">Attend</a></td>
+    </tr>
+  </tbody>
+</table>
+<a routerLink="/create/0">Create</a>
+</body>
