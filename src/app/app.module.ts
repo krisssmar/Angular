@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MeetingListComponent } from './meeting-list/meeting-list.component';
 import { MeetingsAttendComponent } from './meetings-attend/meetings-attend.component';
 import { CreateMeetingComponent } from './create-meeting/create-meeting.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CreateMeetingComponent } from './create-meeting/create-meeting.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,19 +2,16 @@
 <header>
 </header>
 <body>
-<form name="test"> <!--method="post" action="create-meeting.component.ts">-->
+<form #newMeetingForm="ngForm"> <!--method="post" action="create-meeting.component.ts">-->
   <p><b>TITLE:</b><br>
-    <input type="text" size="40">
+    <input name="title" #title="ngModel" [(ngModel)]="model.title" required type="text" size="40"> <!--#title можно использовать как переменную -->
+    <span [hidden]="title.pristine || title.valid" style="color: red">You need to provide the value for the title</span>
   </p>
   <p><b>DATE:</b><br>
-    <input type="text" size="40">
+    <input name ="date" [(ngModel)]="model.date"  type="text" size="40">
   </p>
-  <p><b>NUMBER OF ATTENDANCES:</b><br>
-    <input type="text" size="40">
-  </p>
-  <p><input type="button" value="OK">
-  <input type="button" value="Cancel"></p>
+  <p><button (click)="create()" [disabled]="!newMeetingForm.form.valid" type="submit"> OK </button>
+    <button  routerLink="/"> Cancel </button></p>
 </form>
 </body>
 </html>
-

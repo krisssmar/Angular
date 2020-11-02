@@ -2,15 +2,16 @@
 <header>
 </header>
 <body>
-<form name="test"> <!--method="post" action="meeting-attend.component.ts">-->
+<form #newAttendeeForm="ngForm">
   <p><b>NAME:</b><br>
-    <input type="text" size="40">
+    <input name="name" #name="ngModel" [(ngModel)]="model.name" required type="text" size="40">
+    <span [hidden]="name.pristine || name.valid" style="color: red">You need to provide the value for the title</span>
   </p>
   <p><b>EMAIL:</b><br>
-    <input type="text" size="40">
+    <input name ="email" [(ngModel)]="model.email" type="text" size="40">
   </p>
-  <p><input type="button" value="OK">
-    <input type="button" value="Cancel"></p>
+  <p><button (click)="create()" [disabled]="!newAttendeeForm.form.valid" type="submit"> OK </button>
+   <button  routerLink="/"> Cancel </button></p>
 </form>
 </body>
 </html>

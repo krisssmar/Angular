@@ -14,10 +14,10 @@
     <tr *ngFor="let item of meeting">
       <td>{{item.title}}</td>
       <td>{{item.date}}</td>
-      <td>{{item.numberOfAttendencies}}</td>
-      <td><a routerLink="/attend/0">Attend</a></td>
+      <td>{{item.numberOfAttendances}}</td>
+      <td><a [routerLink]="['/', 'attend', item.id]">Attend</a></td>
     </tr>
   </tbody>
 </table>
-<a routerLink="/create/0">Create</a>
+<a routerLink="/create">Create</a>
 </body>

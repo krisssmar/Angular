@@ -7,7 +7,7 @@ import {CreateMeetingComponent} from './create-meeting/create-meeting.component'
 const routes: Routes = [
   {path : '', pathMatch: 'full', component: MeetingListComponent},
   {path : 'attend/:id', component: MeetingsAttendComponent},
-  {path : 'create/:id', component: CreateMeetingComponent},
+  {path : 'create', component: CreateMeetingComponent},
 ];
 
 @NgModule({
