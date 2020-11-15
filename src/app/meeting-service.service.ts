@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
+import { MeetingsService } from './api/services';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +10,23 @@ export class MeetingServiceService {
   // @ts-ignore
   public meeting: Array<Meeting> = [];
   public getMeetings(): Observable<Array<Meeting>>{
-    return of(this.meeting);
+    return this.servise.getApiMeetings().pipe( map(data => {
+      return data.map(item => {
+        const result = new Meeting();
+        result.id = item.id;
+        result.title = item.title;
+        result.date = new Date(item.date);
+        if (item.visitors){
+          result.numberOfAttendances = item.visitors.length;
+        }
+        else{
+          result.numberOfAttendances = 0;
+        }
+        return result;
+      });
+    }));
   }
-  constructor() {
-    this.meeting.push({id: 1, title: 'Concert', date: new Date(Date.parse('01.01.2020')), numberOfAttendances: 100});
-    this.meeting.push({id: 2, title: 'Lecture', date: new Date(Date.parse('02.01.2020')), numberOfAttendances: 10});
-    this.meeting.push({id: 3, title: 'Football Match', date: new Date(Date.parse('04.01.2020')), numberOfAttendances: 1000});
+  constructor(private servise: MeetingsService) {
   }
 
   public addMeeting(title: string, date: Date): Observable<any> {

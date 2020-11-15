@@ -7,6 +7,7 @@ import { MeetingListComponent } from './meeting-list/meeting-list.component';
 import { MeetingsAttendComponent } from './meetings-attend/meetings-attend.component';
 import { CreateMeetingComponent } from './create-meeting/create-meeting.component';
 import {FormsModule} from '@angular/forms';
+import {ApiModule} from './api/api.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ApiModule
   ],
   providers: [],
   bootstrap: [AppComponent]
